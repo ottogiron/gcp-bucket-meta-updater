@@ -6,7 +6,7 @@
  */
 const Storage = require("@google-cloud/storage").Storage;
 
-exports.metadataUpdater = (data, context) => {
+exports.metaDataUpdater = (data, context) => {
   const fileInfo = data;
 
   const storage = new Storage();
