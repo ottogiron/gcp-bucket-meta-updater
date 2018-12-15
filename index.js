@@ -13,7 +13,7 @@ exports.metadataUpdater = (data, context) => {
   const bucket = storage.bucket(fileInfo.bucket);
   const file = bucket.file(fileInfo.name);
   const metadata = {
-    cacheControl: "max-age=2592000, public"
+    cacheControl: "max-age=2628000, public"
   };
 
   file.setMetadata(metadata, function(err, apiResponse) {});
