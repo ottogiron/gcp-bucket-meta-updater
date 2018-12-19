@@ -8,7 +8,7 @@ const Storage = require("@google-cloud/storage").Storage;
 
 exports.metaDataUpdater = (data, context) => {
   const fileInfo = data;
-  const cacheMetaDataValue = "max-age=2628000, public";
+  const cacheMetaDataValue = "max-age=31536000, public";
   const storage = new Storage();
   const bucket = storage.bucket(fileInfo.bucket);
   const file = bucket.file(fileInfo.name);
