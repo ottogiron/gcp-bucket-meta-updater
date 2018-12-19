@@ -16,7 +16,13 @@ exports.metaDataUpdater = (data, context) => {
     cacheControl: cacheMetaDataValue
   };
   console.log("Changing file metadata:", fileInfo.name);
-  file.setMetadata(metadata, function(err, apiResponse) {
-    console.log("Changed file "+fileInfo.name+" Cache-control metadata to ", cacheMetaDataValue);
-  });
+
+  //This setTimout is just necessary for avoiding an issue with gcsfuse (which is currently used to upload files) https://github.com/GoogleCloudPlatform/gcsfuse/issues/200
+  //When the metadata is concurrently written the file is corrupted and uploaded with a 0 byte size
+  setTimeout(function(){
+    file.setMetadata(metadata, function(err, apiResponse) {
+      console.log("Changed file "+fileInfo.name+" Cache-control metadata to ", cacheMetaDataValue);
+    });
+  },500)
+ 
 };
