@@ -23,6 +23,6 @@ exports.metaDataUpdater = (data, context) => {
     file.setMetadata(metadata, function(err, apiResponse) {
       console.log("Changed file "+fileInfo.name+" Cache-control metadata to ", cacheMetaDataValue);
     });
-  },500)
+  },5000)
  
 };
